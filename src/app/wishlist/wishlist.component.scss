@@ -1,0 +1,24 @@
+#wishlist {
+    margin-left: -22px;
+    .card {
+        margin-left: 22.6px;
+    }
+    .b-color {
+        display: block;
+        margin: 14px auto;
+        background-color: #403F45;
+        color: #FDEC00;
+        &:hover {
+            background-color:#E6CE1D;
+            color: #403F45;
+        }
+    }
+    .img-car {
+        height: 140px;
+        object-fit: cover;
+    }
+}
+
+#heart-icon {
+    color: #FDEC00;
+}

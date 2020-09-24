@@ -1,0 +1,30 @@
+.invalid {
+    border: 1px solid red;
+}
+.b-color {
+    background-color: #403F45;
+        color: #FDEC00;
+        &:hover {
+            background-color:#E6CE1D;
+            color: #403F45;
+        }
+}
+#images {
+    position: relative;
+
+    i {
+        cursor: pointer;
+        font-size: 30px;
+    }
+    #add {
+        position: absolute;
+        bottom: 4px;
+        right: -33px;
+    }
+    #remove {
+        position: absolute;
+        bottom: 4px;
+        right: -70px;
+    }
+
+}

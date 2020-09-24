@@ -1,0 +1,27 @@
+<div class="card border-warning w-25 mx-auto pb-2 rounded">
+  <div class="card-header bg-warning text-center font-weight-bold">Sign in to CarShop</div>
+<form class="w-75 mx-auto" (ngSubmit)="f.form.valid && onSignIn(f)" #f="ngForm">
+    <div class="form-group mt-3">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" name="email" maxlength="50" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      ngModel #email="ngModel" [ngClass]="{'invalid': f.submitted && email.invalid }" required>
+      <div *ngIf="f.submitted && email.invalid">
+        <span class="help-block text-danger" *ngIf="email.errors.required">Field is required cannot be empty</span>
+        <span class="help-block text-danger" *ngIf="email.errors.pattern">
+          This is not valid email address</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" name="password" minlength="6" maxlength="70" ngModel
+      #password="ngModel" [ngClass]="{'invalid': f.submitted && password.invalid }" required>
+      <div *ngIf="f.submitted && password.invalid">
+        <span class="help-block text-danger" *ngIf="password.errors.required">Field is required cannot be empty</span>
+        <span class="help-block text-danger" *ngIf="password.errors.minlength">
+        The password must contain at least 6 characters</span>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-warning d-block mx-auto">Sign in</button>
+    <div class="text-center py-2">You don't have an account. <a routerLink="/sign-up">Sign up</a></div>
+  </form>
+</div>

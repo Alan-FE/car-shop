@@ -1,0 +1,16 @@
+#nav {
+    background-color: #403F45;
+    font-size: 18px;
+
+    a {
+        color: #FDEC00;
+
+        &:hover {
+            color: #E6CE1D;
+        }
+    }
+
+    .active {
+        color: #f3f2f5;
+    }
+}

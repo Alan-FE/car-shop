@@ -1,0 +1,52 @@
+#form {
+    margin: auto;
+}
+
+#wrapper {
+    margin: 0 -15px;
+    
+    .card {
+        width: 261.2px;
+        margin-left: 15px;
+        margin-bottom: 15px;
+        .head {
+            position: relative;
+        }
+
+        .b-color {
+            display: block;
+            margin: 0 auto;
+            background-color: #403F45;
+            color: #FDEC00;
+            &:hover {
+                background-color:#E6CE1D;
+                color: #403F45;
+            }
+        }
+        .b-color-1{
+            background-color: #403F45;
+            color: #FDEC00;
+            margin-right: 21px;
+            &:hover {
+                background-color:#E6CE1D;
+                color: #403F45;
+            }
+        }
+        i {
+            font-size: 18px;
+        }
+        
+        #wishlist {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            color: #FDEC00;
+            cursor: pointer;
+        }
+
+        .img-car {
+            height: 140px;
+            object-fit: cover;
+        }
+    }
+}

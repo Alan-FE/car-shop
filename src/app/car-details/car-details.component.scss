@@ -1,0 +1,45 @@
+#carousel {
+    display: inline-block;
+    width: 700px;
+    height: 500px;
+    background-color: #403F45;
+    img {
+        height: 500px !important;
+        object-fit: contain;
+        object-position: center;
+    }
+}
+#table {
+    display: inline-block;
+    width: 650px;
+    height: 500px;
+    margin-left: 16px;
+    .table-size {
+        height: 100%;
+    }
+}
+#data-container {
+    display: inline-block;
+    width: 700px;
+    border-right:1px solid #403F45;
+        #description {
+            min-height: 100px;
+            width: 100%;
+        }
+        #contact {
+            width: 100%;
+        }
+}
+.b-color {
+    background-color: #403F45;
+        color: #FDEC00;
+        &:hover {
+            background-color:#E6CE1D;
+            color: #403F45;
+        }
+}
+
+#btn {
+    display: inline-block;
+    width: 666px;
+}
