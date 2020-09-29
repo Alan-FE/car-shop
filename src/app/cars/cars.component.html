@@ -6,7 +6,7 @@
 </div>
 <div>
 
-  <form class="form-inline justify-content-center" (ngSubmit)="search(f)" #f="ngForm" id="form">
+  <form class="form-inline justify-content-center" (ngSubmit)="f.value.keyword !== '' && search(f)" #f="ngForm" id="form">
     <div class="form-row">
       <div class="form-group mr-2">  
         <input type="text" class="form-control" name="keyword" placeholder="Enter a keyword" ngModel>
