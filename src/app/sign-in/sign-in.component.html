@@ -1,4 +1,5 @@
-<div class="card border-warning w-25 mx-auto pb-2 rounded">
+<div class="row m-0 justify-content-center">
+<div class="card border-warning p-0 rounded col-xl-3 col-lg-4 col-md-4 col-sm-6 col-8">
   <div class="card-header bg-warning text-center font-weight-bold">Sign in to CarShop</div>
 <form class="w-75 mx-auto" (ngSubmit)="f.form.valid && onSignIn(f)" #f="ngForm">
     <div class="form-group mt-3">
@@ -22,6 +23,7 @@
       </div>
     </div>
     <button type="submit" class="btn btn-warning d-block mx-auto">Sign in</button>
-    <div class="text-center py-2">You don't have an account. <a routerLink="/sign-up">Sign up</a></div>
+    <div class="text-center py-3">You don't have an account. <a routerLink="/sign-up">Sign up</a></div>
   </form>
+</div>
 </div>

@@ -1,134 +1,136 @@
-<div class="card w-50 mx-auto">
-    <div class="card-header">
-        <h1 class="text-center">Sell your car fill out the form</h1>
+<div class="row m-0 justify-content-center">
+    <div class="card p-0 col-xl-4 col-lg-5 col-md-6 col-sm-7 col-8">
+        <div class="card-header">
+            <h1 class="text-center">Sell your car fill out the form</h1>
+        </div>
+
+        <form class="p-3" (ngSubmit)="f.form.valid && addCar(f)" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="make">Make</label>
+                <input type="text" name="make" ngModel class="form-control" id="make" minlength="3" maxlength="30" #make="ngModel" [ngClass]="{'invalid': f.submitted && make.invalid }"  required>
+                <div *ngIf="f.submitted && make.invalid">
+                    <span class="help-block text-danger" *ngIf="make.errors.required">Field is required cannot be empty</span>
+                    <span class="help-block text-danger" *ngIf="make.errors.minlength">
+                    The field must contain at least 3 characters</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="model">Model</label>
+                <input type="text" name="model" ngModel class="form-control" id="model" minlength="1" maxlength="30" #model="ngModel" [ngClass]="{'invalid': f.submitted && model.invalid }" required>
+                <div *ngIf="f.submitted && model.invalid">
+                    <span class="help-block text-danger" *ngIf="model.errors.required">Field is required cannot be empty</span>
+                    <span class="help-block text-danger" *ngIf="model.errors.minlength">
+                    The field must contain at least 1 character</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="engine">Engine</label>
+                <input type="text" name="engine" ngModel class="form-control" id="engine" minlength="3" maxlength="14" #engine="ngModel" [ngClass]="{'invalid': f.submitted && engine.invalid }" required>
+                <div *ngIf="f.submitted && engine.invalid">
+                    <span class="help-block text-danger" *ngIf="engine.errors.required">Field is required cannot be empty</span>
+                    <span class="help-block text-danger" *ngIf="engine.errors.minlength">
+                    The field must contain at least 3 characters</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+            <label for="year">Year</label>
+            <input type="date" name="year" ngModel class="form-control" id="year" #year="ngModel" [ngClass]="{'invalid': f.submitted && year.invalid }" required>
+            <div *ngIf="f.submitted && year.invalid">
+                <span class="help-block text-danger" *ngIf="year.errors.required">Field is required cannot be empty</span>
+            </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Transmission">Transmission</label>
+                <select class="form-control" name="transmission" ngModel id="Transmission" #transmission="ngModel" [ngClass]="{'invalid': f.submitted && transmission.invalid }" required>
+                <option selected disabled hidden>- Choose option -</option>
+                <option>Manual</option>
+                <option>Automatic</option>
+                <option>Steptronic /Tiptronic</option>
+                </select>
+                <span class="help-block text-danger" *ngIf="f.submitted && transmission.invalid">
+                    Field is required, choose option!</span>
+            </div>
+
+            <div class="form-group">
+                <label for="mileage">Mileage</label>
+                <input type="number" name="mileage" ngModel class="form-control" id="mileage" max="6" #mileage="ngModel" [ngClass]="{'invalid': f.submitted && mileage.invalid }" required>
+                <span class="help-block text-danger" *ngIf="f.submitted && mileage.invalid">
+                The field cannot be empty, it must contain a maximum of 6 digits</span> 
+            
+            </div>
+
+            <div class="form-group">
+                <label for="color">Color</label>
+                <input type="text" name="color" ngModel class="form-control" id="color" minlength="3" maxlength="15" #color="ngModel" [ngClass]="{'invalid': f.submitted && color.invalid }" required>
+                <div *ngIf="f.submitted && color.invalid">
+                    <span class="help-block text-danger" *ngIf="color.errors.required">Field is required cannot be empty</span>
+                    <span class="help-block text-danger" *ngIf="color.errors.minlength">
+                    The field must contain at least 3 characters</span>
+                    <span class="help-block text-danger" *ngIf="color.errors.maxlength">
+                        The field can contain a maximum of 15 characters</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="fuel">Fuel</label>
+                <select ngModel name="fuel" class="form-control" id="fuel" #fuel="ngModel" [ngClass]="{'invalid': f.submitted && fuel.invalid }" required>
+                <option selected disabled hidden>- Choose option -</option>
+                <option>Petrol</option>
+                <option>Diesel</option>
+                <option>Electric</option>
+                <option>Hybrid</option>
+                <option>Other</option>
+                </select>
+                <span class="help-block text-danger" *ngIf="f.submitted && fuel.invalid">Field is required, choose option!</span>
+            </div>
+
+            <div class="form-group">
+                <label for="seller">Seller</label>
+                <input type="text" name="seller" ngModel class="form-control" id="seller" minlength="3" maxlength="50" #seller="ngModel" [ngClass]="{'invalid': f.submitted && seller.invalid }"  required>
+                <div *ngIf="f.submitted && seller.invalid">
+                    <span class="help-block text-danger" *ngIf="seller.errors.required">Field is required cannot be empty</span>
+                    <span class="help-block text-danger" *ngIf="seller.errors.minlength">
+                    The field must contain at least 3 characters</span>
+            </div>
+            </div>
+
+            <div class="form-group" *ngFor="let image of images; let i = index;" id="images">
+                <label for="images">Image {{ i+1 }}</label>
+                <input type="text" name="image_{{i}}" ngModel [(ngModel)]="image.images" class="form-control" id="images"
+                placeholder="Enter the image url">
+                    <i *ngIf="i == 0" class="fas fa-plus-square text-success" (click)="addInput()" id="add" title="Add more"></i>
+                    <i *ngIf="i !== 0"  class="fas fa-minus-square text-danger" (click)="removeInput(i)" id="remove" title="Remove"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="phone-number">Phone number</label>
+                <input type="text" name="phoneNumber" ngModel class="form-control"
+                id="phone-number"  min="9" max="15" #phoneNumber="ngModel" [ngClass]="{'invalid': f.submitted && phoneNumber.invalid }" required>
+                <span class="help-block text-danger" *ngIf="f.submitted && phoneNumber.invalid">
+                    The field cannot be empty, it must contain at least 6 digits and a maximum of 15 digits</span>
+            </div>
+
+            <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" name="description" ngModel id="description" rows="3" maxlength="200"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" name="price" ngModel class="form-control" id="price" #price="ngModel" min="2" max="8" [ngClass]="{'invalid': f.submitted && price.invalid }" required>
+                <span class="help-block text-danger" *ngIf="f.submitted && price.invalid">
+                    The field cannot be empty, it must contain at least 1 digits and a maximum of 8 digits</span>
+            </div>
+
+            <div class="text-center p-2 m-0 row justify-content-center">
+            <button type="submit" class="btn b-color mb-2 mb-sm-0 mr-sm-2 col-7 col-sm-5 col-md-4">Add your car</button>
+            <button class="btn btn-warning col-7 col-sm-5 col-md-4" (click)="resetForm(f)">Reset form</button>
+            </div>
+
+        </form>
     </div>
-
-    <form class="w-75 mx-auto" (ngSubmit)="f.form.valid && addCar(f)" #f="ngForm" novalidate>
-        <div class="form-group">
-            <label for="make">Make</label>
-            <input type="text" name="make" ngModel class="form-control" id="make" minlength="3" maxlength="30" #make="ngModel" [ngClass]="{'invalid': f.submitted && make.invalid }"  required>
-            <div *ngIf="f.submitted && make.invalid">
-                <span class="help-block text-danger" *ngIf="make.errors.required">Field is required cannot be empty</span>
-                <span class="help-block text-danger" *ngIf="make.errors.minlength">
-                The field must contain at least 3 characters</span>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="model">Model</label>
-            <input type="text" name="model" ngModel class="form-control" id="model" minlength="1" maxlength="30" #model="ngModel" [ngClass]="{'invalid': f.submitted && model.invalid }" required>
-            <div *ngIf="f.submitted && model.invalid">
-                <span class="help-block text-danger" *ngIf="model.errors.required">Field is required cannot be empty</span>
-                <span class="help-block text-danger" *ngIf="model.errors.minlength">
-                The field must contain at least 1 character</span>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="engine">Engine</label>
-            <input type="text" name="engine" ngModel class="form-control" id="engine" minlength="3" maxlength="30" #engine="ngModel" [ngClass]="{'invalid': f.submitted && engine.invalid }" required>
-            <div *ngIf="f.submitted && engine.invalid">
-                <span class="help-block text-danger" *ngIf="engine.errors.required">Field is required cannot be empty</span>
-                <span class="help-block text-danger" *ngIf="engine.errors.minlength">
-                The field must contain at least 3 characters</span>
-            </div>
-        </div>
-
-        <div class="form-group">
-        <label for="year">Year</label>
-        <input type="date" name="year" ngModel class="form-control" id="year" #year="ngModel" [ngClass]="{'invalid': f.submitted && year.invalid }" required>
-        <div *ngIf="f.submitted && year.invalid">
-            <span class="help-block text-danger" *ngIf="year.errors.required">Field is required cannot be empty</span>
-        </div>
-        </div>
-
-        <div class="form-group">
-            <label for="Transmission">Transmission</label>
-            <select class="form-control" name="transmission" ngModel id="Transmission" #transmission="ngModel" [ngClass]="{'invalid': f.submitted && transmission.invalid }" required>
-            <option selected disabled hidden>- Choose option -</option>
-            <option>Manual</option>
-            <option>Automatic</option>
-            <option>Steptronic /Tiptronic</option>
-            </select>
-            <span class="help-block text-danger" *ngIf="f.submitted && transmission.invalid">
-                Field is required, choose option!</span>
-        </div>
-
-        <div class="form-group">
-            <label for="mileage">Mileage</label>
-            <input type="number" name="mileage" ngModel class="form-control" id="mileage" max="6" #mileage="ngModel" [ngClass]="{'invalid': f.submitted && mileage.invalid }" required>
-            <span class="help-block text-danger" *ngIf="f.submitted && mileage.invalid">
-            The field cannot be empty, it must contain a maximum of 6 digits</span> 
-           
-        </div>
-
-        <div class="form-group">
-            <label for="color">Color</label>
-            <input type="text" name="color" ngModel class="form-control" id="color" minlength="3" maxlength="15" #color="ngModel" [ngClass]="{'invalid': f.submitted && color.invalid }" required>
-            <div *ngIf="f.submitted && color.invalid">
-                <span class="help-block text-danger" *ngIf="color.errors.required">Field is required cannot be empty</span>
-                <span class="help-block text-danger" *ngIf="color.errors.minlength">
-                The field must contain at least 3 characters</span>
-                <span class="help-block text-danger" *ngIf="color.errors.maxlength">
-                    The field can contain a maximum of 15 characters</span>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="fuel">Fuel</label>
-            <select ngModel name="fuel" class="form-control" id="fuel" #fuel="ngModel" [ngClass]="{'invalid': f.submitted && fuel.invalid }" required>
-            <option selected disabled hidden>- Choose option -</option>
-            <option>Petrol</option>
-            <option>Diesel</option>
-            <option>Electric</option>
-            <option>Hybrid</option>
-            <option>Other</option>
-            </select>
-            <span class="help-block text-danger" *ngIf="f.submitted && fuel.invalid">Field is required, choose option!</span>
-        </div>
-
-        <div class="form-group">
-            <label for="seller">Seller</label>
-            <input type="text" name="seller" ngModel class="form-control" id="seller" minlength="3" maxlength="50" #seller="ngModel" [ngClass]="{'invalid': f.submitted && seller.invalid }"  required>
-            <div *ngIf="f.submitted && seller.invalid">
-                <span class="help-block text-danger" *ngIf="seller.errors.required">Field is required cannot be empty</span>
-                <span class="help-block text-danger" *ngIf="seller.errors.minlength">
-                The field must contain at least 3 characters</span>
-        </div>
-        </div>
-
-        <div class="form-group" *ngFor="let image of images; let i = index;" id="images">
-            <label for="images">Images</label>
-            <input type="text" name="image_{{i}}" ngModel [(ngModel)]="image.images" class="form-control" id="images"
-             placeholder="Enter the image url">
-             <i class="fas fa-plus-square text-success" (click)="addInput()" id="add"></i>
-             <i *ngIf="i !== 0"  class="fas fa-minus-square text-danger" (click)="removeInput(i)" id="remove"></i>
-        </div>
-
-        <div class="form-group">
-            <label for="phone-number">Phone number</label>
-            <input type="text" name="phoneNumber" ngModel class="form-control"
-            id="phone-number"  min="9" max="15" #phoneNumber="ngModel" [ngClass]="{'invalid': f.submitted && phoneNumber.invalid }" required>
-            <span class="help-block text-danger" *ngIf="f.submitted && phoneNumber.invalid">
-                The field cannot be empty, it must contain at least 6 digits and a maximum of 15 digits</span>
-        </div>
-
-        <div class="form-group">
-        <label for="description">Description</label>
-        <textarea class="form-control" name="description" ngModel id="description" rows="3" maxlength="200"></textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="price">Price</label>
-            <input type="number" name="price" ngModel class="form-control" id="price" #price="ngModel" min="2" max="8" [ngClass]="{'invalid': f.submitted && price.invalid }" required>
-            <span class="help-block text-danger" *ngIf="f.submitted && price.invalid">
-                The field cannot be empty, it must contain at least 1 digits and a maximum of 8 digits</span>
-        </div>
-
-        <div class="text-center p-2 mx-auto">
-        <button type="submit" class="btn b-color mr-2">Add your car</button>
-        <button class="btn btn-warning" (click)="resetForm(f)">Reset form</button>
-        </div>
-
-    </form>
 </div>

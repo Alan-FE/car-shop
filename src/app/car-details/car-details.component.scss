@@ -1,6 +1,4 @@
 #carousel {
-    display: inline-block;
-    width: 700px;
     height: 500px;
     background-color: #403F45;
     img {
@@ -11,16 +9,12 @@
 }
 #table {
     display: inline-block;
-    width: 650px;
     height: 500px;
-    margin-left: 16px;
     .table-size {
         height: 100%;
     }
 }
 #data-container {
-    display: inline-block;
-    width: 700px;
     border-right:1px solid #403F45;
         #description {
             min-height: 100px;
@@ -40,6 +34,5 @@
 }
 
 #btn {
-    display: inline-block;
-    width: 666px;
+    width: 20%;
 }

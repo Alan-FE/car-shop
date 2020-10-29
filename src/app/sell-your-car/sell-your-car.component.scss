@@ -11,20 +11,20 @@
 }
 #images {
     position: relative;
-
+    width: 95%;
     i {
         cursor: pointer;
-        font-size: 30px;
+        font-size: 1.6em;
     }
     #add {
         position: absolute;
-        bottom: 4px;
-        right: -33px;
+        bottom: 6px;
+        right: -20px;
     }
     #remove {
         position: absolute;
-        bottom: 4px;
-        right: -70px;
+        bottom: 6px;
+        right: -20px;
     }
 
 }

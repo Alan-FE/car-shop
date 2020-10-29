@@ -1,4 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    font-family: 'Crimson Text', serif;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.04em!important;
+
+    h1 {
+        font-size: 2em;
+    }
+
+    button {
+        font-size: 0.9em!important;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    body {
+        font-size: 1em!important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 0.9em!important;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    body {
+        font-size: 0.8em!important;
+    }
 }

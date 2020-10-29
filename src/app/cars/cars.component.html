@@ -6,44 +6,47 @@
 </div>
 <div>
 
-  <form class="form-inline justify-content-center" (ngSubmit)="f.value.keyword !== '' && search(f)" #f="ngForm" id="form">
+  <form class="form-inline justify-content-center" (ngSubmit)="f.value.keyword !== '' && search(f)" #f="ngForm"
+    id="form">
     <div class="form-row">
-      <div class="form-group mr-2">  
-        <input type="text" class="form-control" name="keyword" placeholder="Enter a keyword" ngModel>
+      <div class="form-group ">
+        <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" name="keyword" placeholder="Enter a keyword"
+          ngModel>
+        <button type="submit" class="btn btn-success form-control" id="search">Search</button>
       </div>
-      <button type="submit" class="btn btn-success">Search</button>
     </div>
   </form>
- <hr>
+  <hr>
 
-<div class="d-flex flex-wrap" id="wrapper">
-  <div class="card" *ngFor="let property of cars | filter:value | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
-    <a [routerLink]="['/car-details', property.make, property.model, property.uniqueId]" style="cursor: pointer;">
-      <img *ngIf="property.images[0].images == ''" src="https://www.affordableautoselgin.com/images/no-photo-car.jpg"
-        class="w-100 img-car" alt="car-image">
-      <img *ngIf="!property.images[0].images == ''" [src]="property.images[0].images" class="w-100 img-car"
-        alt="car-image"></a>
-    <div class="head px-2 pt-2 pb-1">
-      <i class="far fa-clock pr-2"></i>
-      <small class="text-muted">{{ property.time }}</small>
-      <i [ngClass]="property.isClicked ? 'fas fa-heart' : 'far fa-heart'" title="Add to wishlist" id="wishlist"
-        (click)="addRemoveWishlist($event, property)"></i>
-    </div>
-    <div class="card-body pt-1">
-      <h5 class="card-title">{{property.make}} {{property.model}}</h5>
-      <p class="card-text">Engine: {{ property.engine }} <br><span>Year: {{property.year}}</span><br><span>Price:
-          {{property.price}}$</span></p>
-    </div>
+  <div class="d-flex flex-wrap row m-0 justify-content-center" id="wrapper">
+    <div class="card m-3 p-0 col-xl-2 col-lg-3 col-md-4 col-sm-5 col-10"
+      *ngFor="let property of cars | filter:value | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+      <a [routerLink]="['/car-details', property.make, property.model, property.uniqueId]" style="cursor: pointer;">
+        <img *ngIf="property.images[0].images == ''" src="https://www.affordableautoselgin.com/images/no-photo-car.jpg"
+          class="w-100 img-car" alt="car-image">
+        <img *ngIf="!property.images[0].images == ''" [src]="property.images[0].images" class="w-100 img-car"
+          alt="car-image"></a>
+      <div class="head px-2 pt-2 pb-1">
+        <i class="far fa-clock pr-2"></i>
+        <small class="text-muted">{{ property.time }}</small>
+        <i [ngClass]="property.isClicked ? 'fas fa-heart' : 'far fa-heart'" title="Add to wishlist" id="wishlist"
+          (click)="addRemoveWishlist($event, property)"></i>
+      </div>
+      <div class="card-body pt-1">
+        <h5 class="card-title">{{property.make}} {{property.model}}</h5>
+        <p class="card-text">Engine: {{ property.engine }} <br><span>Year: {{property.year}}</span><br><span>Price:
+            {{property.price}}$</span></p>
+      </div>
 
-    <div *ngIf="!authService.getAdminStatus()" class="card-footer py-1">
-      <button class="btn btn-md b-color"
-        [routerLink]="['/car-details', property.make, property.model, property.uniqueId]">Show car details</button>
-    </div>
-    <div *ngIf="authService.getAdminStatus()" class="card-footer py-2">
-      <button class="btn btn-sm b-color-1"
-        [routerLink]="['/car-details', property.make, property.model, property.uniqueId]">Show car details</button>
-      <button class="btn btn-danger btn-sm" (click)="removeCar(property, i)">Delete car</button>
+      <div *ngIf="!authService.getAdminStatus()" class="card-footer py-1">
+        <button class="btn btn-md b-color"
+          [routerLink]="['/car-details', property.make, property.model, property.uniqueId]">Show car details</button>
+      </div>
+      <div *ngIf="authService.getAdminStatus()" class="card-footer py-2">
+        <button class="btn btn-sm b-color-1"
+          [routerLink]="['/car-details', property.make, property.model, property.uniqueId]">Show car details</button>
+        <button class="btn btn-danger btn-sm" (click)="removeCar(property, i)">Delete car</button>
+      </div>
     </div>
   </div>
-</div>
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <pagination-controls class="text-center" (pageChange)="p = $event"></pagination-controls>

@@ -3,12 +3,9 @@
 }
 
 #wrapper {
-    margin: 0 -15px;
-    
     .card {
-        width: 261.2px;
-        margin-left: 15px;
-        margin-bottom: 15px;
+        min-width: 200px;
+        max-width: 310px;
         .head {
             position: relative;
         }
@@ -48,5 +45,6 @@
             height: 140px;
             object-fit: cover;
         }
+
     }
 }

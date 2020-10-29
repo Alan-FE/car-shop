@@ -3,9 +3,9 @@
     <span class="sr-only">Loading...</span>
   </div>
 </div>
-<div id="wishlist">
+<div id="wishlist" class="d-flex flex-wrap justify-content-center">
   <div *ngFor="let item of array; let i = index" class="d-inline-block">
-    <div class="card mb-3 d-inline-block" style="max-width: 440px;">
+    <div class="card m-1 m-sm-3 p-0 d-inline-block col-xl-4 col-lg-6 col-md-6" style="max-width: 389px;">
       <div class="row no-gutters">
         <div class="col-md-6">
           <a [routerLink]="['/car-details', item.make, item.model, item.uniqueId]" style="cursor: pointer;">
@@ -17,7 +17,7 @@
               title="Remove from wishlist"></i></button>
         </div>
         <div class="col-md-6">
-          <div class="card-body">
+          <div class="card-body pt-0 p-md-3 pr-lg-0">
             <a [routerLink]="['/car-details', item.make, item.model, item.uniqueId]" style="cursor: pointer; color: black;">
             <h5 class="card-title">{{ item.make}} {{ item.model }}</h5>
             </a>

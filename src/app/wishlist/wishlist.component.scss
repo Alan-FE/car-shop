@@ -1,11 +1,7 @@
 #wishlist {
-    margin-left: -22px;
-    .card {
-        margin-left: 22.6px;
-    }
     .b-color {
         display: block;
-        margin: 14px auto;
+        margin: 12px auto;
         background-color: #403F45;
         color: #FDEC00;
         &:hover {
@@ -21,4 +17,10 @@
 
 #heart-icon {
     color: #FDEC00;
+}
+
+@media screen and (max-width: 414px) {
+    .card {
+        max-width: 200px!important;
+    }
 }
